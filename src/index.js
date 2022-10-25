@@ -3,34 +3,26 @@ import { evenIntro, outputEvenQuestion } from '../games/even.js';
 import { calcIntro, outputCalcQuestion } from '../games/calc.js';
 import { gcdIntro, outputGcdQuestion } from '../games/gcd.js';
 import { progressionIntro, outputProgressionQuestion } from '../games/progression.js';
+import { primeIntro, outputPrimeQuestion } from '../games/prime.js';
 import { getUserAnswer } from './utils.js';
 
-const askQuestion = (gameType) => {
-  let correctAnswer;
-
+const outputGameQuestion = (gameType) => {
   switch (gameType) {
-    case 'even': {
-      correctAnswer = outputEvenQuestion();
-      break;
-    }
-    case 'calc': {
-      correctAnswer = outputCalcQuestion();
-      break;
-    }
-    case 'gcd': {
-      correctAnswer = outputGcdQuestion();
-      break;
-    }
-    case 'progression': {
-      correctAnswer = outputProgressionQuestion();
-      break;
-    }
+    case 'even': return outputEvenQuestion();
+    case 'calc': return outputCalcQuestion();
+    case 'gcd': return outputGcdQuestion();
+    case 'progression': return outputProgressionQuestion();
+    case 'prime': return outputPrimeQuestion();
     default:
       console.log('Houston, we have a problem!');
+      return null;
   }
+};
 
+const askQuestion = (gameType) => {
+  const correctAnswer = outputGameQuestion(gameType);
   const answer = getUserAnswer();
-  const isCorrect = gameType === 'even'
+  const isCorrect = answer === 'yes' || answer === 'no'
     ? answer === correctAnswer
     : Number(answer) === correctAnswer;
 
@@ -59,8 +51,19 @@ const outputIntro = (gameType) => {
     case 'progression':
       console.log(progressionIntro);
       break;
+    case 'prime':
+      console.log(primeIntro);
+      break;
     default:
       console.log('Houston, we have a problem!');
+  }
+};
+
+const getGameResults = (isSuccessful, userName) => {
+  if (isSuccessful) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
   }
 };
 
@@ -81,11 +84,7 @@ const playBrainGame = (gameType) => {
     }
   }
 
-  if (areAllCorrect) {
-    console.log(`Congratulations, ${userName}!`);
-  } else {
-    console.log(`Let's try again, ${userName}!`);
-  }
+  getGameResults(areAllCorrect, userName);
 };
 
 export default playBrainGame;

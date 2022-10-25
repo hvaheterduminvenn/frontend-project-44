@@ -15,3 +15,6 @@ https://asciinema.org/a/532002
 
 ### Аскинема с примером (brain-progression) запуска игры.
 https://asciinema.org/a/532024
+
+### Аскинема с примером (brain-prime) запуска игры.
+https://asciinema.org/a/532035

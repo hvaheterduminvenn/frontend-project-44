@@ -1,19 +1,6 @@
-import { outputQuestion, generateRandomNumber } from '../src/utils.js';
+import { outputQuestion, generateRandomNumber, getDivisors } from '../src/utils.js';
 
 export const gcdIntro = 'Find the greatest common divisor of given numbers.';
-
-const getDivisors = (number) => {
-  const divisors = [];
-  for (let i = 1; i <= (number / 2); i += 1) {
-    if (number % i === 0) {
-      divisors.push(i);
-    }
-  }
-
-  divisors.push(number);
-
-  return divisors;
-};
 
 const getGcd = (a, b) => {
   const aDivisors = getDivisors(a);

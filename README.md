@@ -12,3 +12,6 @@ https://asciinema.org/a/531991
 
 ### Аскинема с примером (brain-gcd) запуска игры.
 https://asciinema.org/a/532002
+
+### Аскинема с примером (brain-progression) запуска игры.
+https://asciinema.org/a/532024

@@ -1,36 +1,38 @@
 import greetUser, { totalQuestions } from './cli.js';
-import outputEvenQuestion from '../games/even.js';
-import outputCalcQuestion from '../games/calc.js';
-import outputGcdQuestion from '../games/gcd.js';
+import { evenIntro, outputEvenQuestion } from '../games/even.js';
+import { calcIntro, outputCalcQuestion } from '../games/calc.js';
+import { gcdIntro, outputGcdQuestion } from '../games/gcd.js';
+import { progressionIntro, outputProgressionQuestion } from '../games/progression.js';
 import { getUserAnswer } from './utils.js';
 
 const askQuestion = (gameType) => {
-  let answer;
   let correctAnswer;
-  let isCorrect;
 
   switch (gameType) {
     case 'even': {
       correctAnswer = outputEvenQuestion();
-      answer = getUserAnswer();
-      isCorrect = answer === correctAnswer;
       break;
     }
     case 'calc': {
       correctAnswer = outputCalcQuestion();
-      answer = getUserAnswer();
-      isCorrect = Number(answer) === correctAnswer;
       break;
     }
     case 'gcd': {
       correctAnswer = outputGcdQuestion();
-      answer = getUserAnswer();
-      isCorrect = Number(answer) === correctAnswer;
+      break;
+    }
+    case 'progression': {
+      correctAnswer = outputProgressionQuestion();
       break;
     }
     default:
       console.log('Houston, we have a problem!');
   }
+
+  const answer = getUserAnswer();
+  const isCorrect = gameType === 'even'
+    ? answer === correctAnswer
+    : Number(answer) === correctAnswer;
 
   return [isCorrect, answer, correctAnswer];
 };
@@ -43,8 +45,28 @@ const getQuestionComment = (isCorrect, answer, correctAnswer) => {
   }
 };
 
+const outputIntro = (gameType) => {
+  switch (gameType) {
+    case 'even':
+      console.log(evenIntro);
+      break;
+    case 'calc':
+      console.log(calcIntro);
+      break;
+    case 'gcd':
+      console.log(gcdIntro);
+      break;
+    case 'progression':
+      console.log(progressionIntro);
+      break;
+    default:
+      console.log('Houston, we have a problem!');
+  }
+};
+
 const playBrainGame = (gameType) => {
   const userName = greetUser();
+  outputIntro(gameType);
 
   let question = 0;
   let areAllCorrect = true;

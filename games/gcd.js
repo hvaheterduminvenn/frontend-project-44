@@ -1,6 +1,6 @@
 import { outputQuestion, generateRandomNumber } from '../src/utils.js';
 
-const gcdIntro = 'Find the greatest common divisor of given numbers.';
+export const gcdIntro = 'Find the greatest common divisor of given numbers.';
 
 const getDivisors = (number) => {
   const divisors = [];
@@ -29,13 +29,10 @@ const getGcd = (a, b) => {
   return gcd;
 };
 
-const outputGcdQuestion = () => {
-  console.log(gcdIntro);
+export const outputGcdQuestion = () => {
   const number1 = generateRandomNumber(100);
   const number2 = generateRandomNumber(100);
   outputQuestion(`${number1} ${number2}`);
 
   return getGcd(number1, number2);
 };
-
-export default outputGcdQuestion;

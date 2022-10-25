@@ -1,6 +1,7 @@
 import greetUser, { totalQuestions } from './cli.js';
-import { outputEvenQuestion } from '../games/even.js';
-import { outputCalcQuestion } from '../games/calc.js';
+import outputEvenQuestion from '../games/even.js';
+import outputCalcQuestion from '../games/calc.js';
+import outputGcdQuestion from '../games/gcd.js';
 import { getUserAnswer } from './utils.js';
 
 const askQuestion = (gameType) => {
@@ -21,6 +22,12 @@ const askQuestion = (gameType) => {
       isCorrect = Number(answer) === correctAnswer;
       break;
     }
+    case 'gcd': {
+      correctAnswer = outputGcdQuestion();
+      answer = getUserAnswer();
+      isCorrect = Number(answer) === correctAnswer;
+      break;
+    }
     default:
       console.log('Houston, we have a problem!');
   }
@@ -36,7 +43,7 @@ const getQuestionComment = (isCorrect, answer, correctAnswer) => {
   }
 };
 
-export default (gameType) => {
+const playBrainGame = (gameType) => {
   const userName = greetUser();
 
   let question = 0;
@@ -58,3 +65,5 @@ export default (gameType) => {
     console.log(`Let's try again, ${userName}!`);
   }
 };
+
+export default playBrainGame;

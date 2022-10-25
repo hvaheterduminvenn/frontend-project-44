@@ -1,6 +1,6 @@
 import { outputQuestion, generateRandomNumber } from '../src/utils.js';
 
-export const calcIntro = 'What is the result of the expression?';
+const calcIntro = 'What is the result of the expression?';
 
 const getCalcResult = (operand1, operand2, operator) => {
   switch (operator) {
@@ -15,7 +15,7 @@ const getCalcResult = (operand1, operand2, operator) => {
   }
 };
 
-export const outputCalcQuestion = () => {
+const outputCalcQuestion = () => {
   console.log(calcIntro);
   const mathOperators = ['+', '-', '*'];
   const randomNumber = Math.floor(Math.random() * mathOperators.length);
@@ -29,3 +29,5 @@ export const outputCalcQuestion = () => {
 
   return getCalcResult(operand1, operand2, randomMathOperator);
 };
+
+export default outputCalcQuestion;

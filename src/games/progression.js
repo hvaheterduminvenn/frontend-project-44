@@ -1,4 +1,4 @@
-import { outputQuestion, generateRandomNumber } from '../src/utils.js';
+import { outputQuestion, generateRandomNumber } from '../utils.js';
 
 export const progressionIntro = 'What number is missing in the progression?';
 

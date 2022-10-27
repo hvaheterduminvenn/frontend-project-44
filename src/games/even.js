@@ -1,4 +1,4 @@
-import { outputQuestion, generateRandomNumber } from '../src/utils.js';
+import { outputQuestion, generateRandomNumber } from '../utils.js';
 
 export const evenIntro = 'Answer "yes" if the number is even, otherwise answer "no".';
 

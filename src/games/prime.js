@@ -1,4 +1,4 @@
-import { outputQuestion, generateRandomNumber, getDivisors } from '../src/utils.js';
+import { outputQuestion, generateRandomNumber, getDivisors } from '../utils.js';
 
 export const primeIntro = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 

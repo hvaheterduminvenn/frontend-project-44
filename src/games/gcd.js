@@ -1,4 +1,4 @@
-import { outputQuestion, generateRandomNumber, getDivisors } from '../src/utils.js';
+import { outputQuestion, generateRandomNumber, getDivisors } from '../utils.js';
 
 export const gcdIntro = 'Find the greatest common divisor of given numbers.';
 

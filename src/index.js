@@ -1,9 +1,9 @@
 import greetUser, { totalQuestions } from './cli.js';
-import { evenIntro, outputEvenQuestion } from '../games/even.js';
-import { calcIntro, outputCalcQuestion } from '../games/calc.js';
-import { gcdIntro, outputGcdQuestion } from '../games/gcd.js';
-import { progressionIntro, outputProgressionQuestion } from '../games/progression.js';
-import { primeIntro, outputPrimeQuestion } from '../games/prime.js';
+import { evenIntro, outputEvenQuestion } from './games/even.js';
+import { calcIntro, outputCalcQuestion } from './games/calc.js';
+import { gcdIntro, outputGcdQuestion } from './games/gcd.js';
+import { progressionIntro, outputProgressionQuestion } from './games/progression.js';
+import { primeIntro, outputPrimeQuestion } from './games/prime.js';
 import { getUserAnswer } from './utils.js';
 
 const outputGameQuestion = (gameType) => {

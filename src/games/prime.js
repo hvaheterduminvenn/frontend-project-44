@@ -1,9 +1,14 @@
-import { outputQuestion, generateRandomNumber, getDivisors } from '../utils.js';
+import { generateRandomNumber, getDivisors } from '../utils.js';
+import playBrainGame from '../index.js';
 
-export const primeIntro = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+export default () => {
+  const primeIntro = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-export const outputPrimeQuestion = () => {
-  const randomNumber = generateRandomNumber(200);
-  outputQuestion(randomNumber);
-  return getDivisors(randomNumber).length <= 2 ? 'yes' : 'no';
+  const generateQuestion = () => {
+    const randomNumber = generateRandomNumber(200);
+    const correctAnswer = getDivisors(randomNumber).length <= 2 ? 'yes' : 'no';
+    return [randomNumber, correctAnswer];
+  };
+
+  playBrainGame(primeIntro, generateQuestion);
 };

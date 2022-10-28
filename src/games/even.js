@@ -1,10 +1,14 @@
-import { outputQuestion, generateRandomNumber } from '../utils.js';
+import { generateRandomNumber } from '../utils.js';
+import playBrainGame from '../index.js';
 
-export const evenIntro = 'Answer "yes" if the number is even, otherwise answer "no".';
+export default () => {
+  const evenIntro = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-export const outputEvenQuestion = () => {
-  const randomNumber = generateRandomNumber(100);
-  outputQuestion(randomNumber);
+  const generateQuestion = () => {
+    const randomNumber = generateRandomNumber(100);
+    const correctAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+    return [randomNumber, correctAnswer];
+  };
 
-  return randomNumber % 2 === 0 ? 'yes' : 'no';
+  playBrainGame(evenIntro, generateQuestion);
 };

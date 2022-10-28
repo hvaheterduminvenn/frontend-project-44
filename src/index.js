@@ -1,81 +1,32 @@
-import greetUser, { totalQuestions } from './cli.js';
-import { evenIntro, outputEvenQuestion } from './games/even.js';
-import { calcIntro, outputCalcQuestion } from './games/calc.js';
-import { gcdIntro, outputGcdQuestion } from './games/gcd.js';
-import { progressionIntro, outputProgressionQuestion } from './games/progression.js';
-import { primeIntro, outputPrimeQuestion } from './games/prime.js';
-import { getUserAnswer } from './utils.js';
+import readlineSync from 'readline-sync';
 
-const outputGameQuestion = (gameType) => {
-  switch (gameType) {
-    case 'even': return outputEvenQuestion();
-    case 'calc': return outputCalcQuestion();
-    case 'gcd': return outputGcdQuestion();
-    case 'progression': return outputProgressionQuestion();
-    case 'prime': return outputPrimeQuestion();
-    default:
-      console.log('Houston, we have a problem!');
-      return null;
-  }
-};
+const playBrainGame = (intro, generateQuestion) => {
+  // Greet User
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
 
-const askQuestion = (gameType) => {
-  const correctAnswer = outputGameQuestion(gameType);
-  const answer = getUserAnswer();
-  const isCorrect = answer === 'yes' || answer === 'no'
-    ? answer === correctAnswer
-    : Number(answer) === correctAnswer;
+  // Print game description
+  console.log(intro);
 
-  return [isCorrect, answer, correctAnswer];
-};
-
-const getQuestionComment = (isCorrect, answer, correctAnswer) => {
-  if (isCorrect) {
-    console.log('Correct!');
-  } else {
-    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-  }
-};
-
-const outputIntro = (gameType) => {
-  switch (gameType) {
-    case 'even':
-      console.log(evenIntro);
-      break;
-    case 'calc':
-      console.log(calcIntro);
-      break;
-    case 'gcd':
-      console.log(gcdIntro);
-      break;
-    case 'progression':
-      console.log(progressionIntro);
-      break;
-    case 'prime':
-      console.log(primeIntro);
-      break;
-    default:
-      console.log('Houston, we have a problem!');
-  }
-};
-
-const getGameResults = (isSuccessful, userName) => {
-  if (isSuccessful) {
-    console.log(`Congratulations, ${userName}!`);
-  } else {
-    console.log(`Let's try again, ${userName}!`);
-  }
-};
-
-const playBrainGame = (gameType) => {
-  const userName = greetUser();
-  outputIntro(gameType);
-
+  const totalQuestions = 3;
   let question = 0;
   let areAllCorrect = true;
   while (areAllCorrect && question < totalQuestions) {
-    const [isAnswerCorrect, answer, correctAnswer] = askQuestion(gameType);
-    getQuestionComment(isAnswerCorrect, answer, correctAnswer);
+    // Ask question
+    const [questionContent, correctAnswer] = generateQuestion();
+    console.log(`Question: ${questionContent}`);
+    const answer = readlineSync.question('Your answer: ');
+    const isAnswerCorrect = answer === 'yes' || answer === 'no'
+      ? answer === correctAnswer
+      : Number(answer) === correctAnswer;
+
+    // Get question comment
+    if (isAnswerCorrect) {
+      console.log('Correct!');
+    } else {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+    }
 
     if (isAnswerCorrect) {
       question += 1;
@@ -84,7 +35,12 @@ const playBrainGame = (gameType) => {
     }
   }
 
-  getGameResults(areAllCorrect, userName);
+  // Get game results
+  if (areAllCorrect) {
+    console.log(`Congratulations, ${userName}!`);
+  } else {
+    console.log(`Let's try again, ${userName}!`);
+  }
 };
 
 export default playBrainGame;

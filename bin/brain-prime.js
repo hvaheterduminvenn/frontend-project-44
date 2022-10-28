@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import playBrainGame from '../src/index.js';
+import playBrainGamePrime from '../src/games/prime.js';
 
-playBrainGame('prime');
+playBrainGamePrime();

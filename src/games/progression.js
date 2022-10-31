@@ -4,7 +4,7 @@ import playBrainGame from '../index.js';
 export default () => {
   const progressionIntro = 'What number is missing in the progression?';
 
-  const generateQuestion = () => {
+  const generateQuestionAndAnswer = () => {
     const randomOperand = generateRandomNumber(50);
     const randomAddend = generateRandomNumber(5);
     const progression = [randomOperand];
@@ -13,11 +13,11 @@ export default () => {
     }
 
     const randomIndex = generateRandomNumber(progression.length - 1);
-    const correctAnswer = progression[randomIndex];
+    const correctAnswer = progression[randomIndex].toString();
     progression[randomIndex] = '..';
     const question = progression.join(' ');
     return [question, correctAnswer];
   };
 
-  playBrainGame(progressionIntro, generateQuestion);
+  playBrainGame(progressionIntro, generateQuestionAndAnswer);
 };

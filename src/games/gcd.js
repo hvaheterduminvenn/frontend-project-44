@@ -18,14 +18,14 @@ const getGcd = (a, b) => {
 export default () => {
   const gcdIntro = 'Find the greatest common divisor of given numbers.';
 
-  const generateQuestion = () => {
+  const generateQuestionAndAnswer = () => {
     const number1 = generateRandomNumber(100);
     const number2 = generateRandomNumber(100);
 
     const question = `${number1} ${number2}`;
-    const correctAnswer = getGcd(number1, number2);
+    const correctAnswer = getGcd(number1, number2).toString();
     return [question, correctAnswer];
   };
 
-  playBrainGame(gcdIntro, generateQuestion);
+  playBrainGame(gcdIntro, generateQuestionAndAnswer);
 };

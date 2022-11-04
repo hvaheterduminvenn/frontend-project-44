@@ -20,17 +20,13 @@ const playBrainGame = (intro, generateQuestionAndAnswer) => {
     // Get question comment
     if (isAnswerCorrect) {
       console.log('Correct!');
+      if (question === totalRounds) {
+        console.log(`Congratulations, ${userName}!`);
+      }
     } else {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    }
-
-    if (!isAnswerCorrect) {
       console.log(`Let's try again, ${userName}!`);
-      break;
-    }
-
-    if (question === totalRounds && isAnswerCorrect) {
-      console.log(`Congratulations, ${userName}!`);
+      return;
     }
   }
 };

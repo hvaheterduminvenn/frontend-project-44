@@ -17,7 +17,7 @@ const getCalcResult = (operand1, operand2, operator) => {
 export default () => {
   const calcIntro = 'What is the result of the expression?';
 
-  const generateQuestionAndAnswer = () => {
+  const generateRoundData = () => {
     const mathOperators = ['+', '-', '*'];
     const randomNumber = Math.floor(Math.random() * mathOperators.length);
     const randomMathOperator = mathOperators[randomNumber];
@@ -30,5 +30,5 @@ export default () => {
     return [question, correctAnswer];
   };
 
-  playBrainGame(calcIntro, generateQuestionAndAnswer);
+  playBrainGame(calcIntro, generateRoundData);
 };

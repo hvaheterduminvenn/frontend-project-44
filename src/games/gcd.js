@@ -1,5 +1,18 @@
-import { generateRandomNumber, getDivisors } from '../utils.js';
+import generateRandomNumber from '../utils.js';
 import playBrainGame from '../index.js';
+
+const getDivisors = (number) => {
+  const divisors = [];
+  for (let i = 1; i <= (number / 2); i += 1) {
+    if (number % i === 0) {
+      divisors.push(i);
+    }
+  }
+
+  divisors.push(number);
+
+  return divisors;
+};
 
 const getGcd = (a, b) => {
   const aDivisors = getDivisors(a);
@@ -15,17 +28,17 @@ const getGcd = (a, b) => {
   return gcd;
 };
 
+const gcdIntro = 'Find the greatest common divisor of given numbers.';
+
+const generateRoundData = () => {
+  const number1 = generateRandomNumber(100);
+  const number2 = generateRandomNumber(100);
+
+  const question = `${number1} ${number2}`;
+  const correctAnswer = getGcd(number1, number2).toString();
+  return [question, correctAnswer];
+};
+
 export default () => {
-  const gcdIntro = 'Find the greatest common divisor of given numbers.';
-
-  const generateRoundData = () => {
-    const number1 = generateRandomNumber(100);
-    const number2 = generateRandomNumber(100);
-
-    const question = `${number1} ${number2}`;
-    const correctAnswer = getGcd(number1, number2).toString();
-    return [question, correctAnswer];
-  };
-
   playBrainGame(gcdIntro, generateRoundData);
 };

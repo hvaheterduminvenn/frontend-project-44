@@ -8,7 +8,7 @@ const playBrainGame = (intro, generateQuestionAndAnswer) => {
   console.log(intro);
 
   const totalRounds = 3;
-  for (let question = 1; question <= totalRounds; question += 1) {
+  for (let i = 1; i <= totalRounds; i += 1) {
     const [questionContent, correctAnswer] = generateQuestionAndAnswer();
     console.log(`Question: ${questionContent}`);
     const answer = readlineSync.question('Your answer: ');

@@ -1,7 +1,7 @@
 import generateRandomNumber from '../utils.js';
 import playBrainGame from '../index.js';
 
-const calcIntro = 'What is the result of the expression?';
+const calcDescription = 'What is the result of the expression?';
 
 const getCalcResult = (operand1, operand2, operator) => {
   switch (operator) {
@@ -30,5 +30,5 @@ const generateRoundData = () => {
 };
 
 export default () => {
-  playBrainGame(calcIntro, generateRoundData);
+  playBrainGame(calcDescription, generateRoundData);
 };

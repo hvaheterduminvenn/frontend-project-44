@@ -1,6 +1,8 @@
 import generateRandomNumber from '../utils.js';
 import playBrainGame from '../index.js';
 
+const gcdDescription = 'Find the greatest common divisor of given numbers.';
+
 const getDivisors = (number) => {
   const divisors = [];
   for (let i = 1; i <= (number / 2); i += 1) {
@@ -28,8 +30,6 @@ const getGcd = (a, b) => {
   return gcd;
 };
 
-const gcdIntro = 'Find the greatest common divisor of given numbers.';
-
 const generateRoundData = () => {
   const number1 = generateRandomNumber(100);
   const number2 = generateRandomNumber(100);
@@ -40,5 +40,5 @@ const generateRoundData = () => {
 };
 
 export default () => {
-  playBrainGame(gcdIntro, generateRoundData);
+  playBrainGame(gcdDescription, generateRoundData);
 };

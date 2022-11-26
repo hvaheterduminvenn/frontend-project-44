@@ -3,7 +3,7 @@ import playBrainGame from '../index.js';
 
 const PROGRESSION_DEFAULT_LENGTH = 10;
 
-const progressionIntro = 'What number is missing in the progression?';
+const progressionDescription = 'What number is missing in the progression?';
 
 const generateProgression = (operand, addend, length) => {
   const progression = [operand];
@@ -26,5 +26,5 @@ const generateRoundData = () => {
 };
 
 export default () => {
-  playBrainGame(progressionIntro, generateRoundData);
+  playBrainGame(progressionDescription, generateRoundData);
 };

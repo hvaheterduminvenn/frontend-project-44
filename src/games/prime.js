@@ -1,9 +1,13 @@
 import generateRandomNumber from '../utils.js';
 import playBrainGame from '../index.js';
 
-const primeIntro = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const primeDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
+  if (number <= 1) {
+    return false;
+  }
+
   const divisors = [];
   for (let i = 1; i <= (number / 2); i += 1) {
     if (number % i === 0) {
@@ -22,5 +26,5 @@ const generateRoundData = () => {
 };
 
 export default () => {
-  playBrainGame(primeIntro, generateRoundData);
+  playBrainGame(primeDescription, generateRoundData);
 };

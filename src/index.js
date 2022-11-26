@@ -1,11 +1,11 @@
 import readlineSync from 'readline-sync';
 
-const playBrainGame = (intro, generateQuestionAndAnswer) => {
+const playBrainGame = (description, generateQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
 
-  console.log(intro);
+  console.log(description);
 
   const totalRounds = 3;
   for (let i = 1; i <= totalRounds; i += 1) {
